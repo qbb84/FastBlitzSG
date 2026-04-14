@@ -1,0 +1,15 @@
+game:
+  min-players: 4
+  max-players: 24
+  countdown-seconds: 30
+  grace-period-seconds: 60
+  deathmatch-border-time: 180
+  deathmatch-final-size: 10
+  deathmatch-border-damage: 4.0
+  ended-delay-seconds: 10
+  chest-cooldown-seconds: 30
+  combat-tag-seconds: 15
+  scoreboard-update-ticks: 2
+
+lobby:
+  world: world

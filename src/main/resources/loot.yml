@@ -1,0 +1,124 @@
+loot-tables:
+  common:
+    bread:
+      item: BREAD
+      amount: "1-3"
+      weight: 40
+    leather_helmet:
+      item: LEATHER_HELMET
+      weight: 20
+    leather_chestplate:
+      item: LEATHER_CHESTPLATE
+      weight: 15
+      enchants:
+        protection: 1
+    wooden_sword:
+      item: WOODEN_SWORD
+      weight: 25
+    wooden_axe:
+      item: WOODEN_AXE
+      weight: 20
+    arrows:
+      item: ARROW
+      amount: "2-5"
+      weight: 30
+    stick:
+      item: STICK
+      amount: "1-4"
+      weight: 35
+    cobblestone:
+      item: COBBLESTONE
+      amount: "4-12"
+      weight: 25
+  uncommon:
+    iron_helmet:
+      item: IRON_HELMET
+      weight: 15
+    iron_boots:
+      item: IRON_BOOTS
+      weight: 15
+    stone_sword:
+      item: STONE_SWORD
+      weight: 20
+    bow:
+      item: BOW
+      weight: 15
+    golden_apple:
+      item: GOLDEN_APPLE
+      weight: 10
+    cooked_beef:
+      item: COOKED_BEEF
+      amount: "2-4"
+      weight: 30
+    chainmail_chestplate:
+      item: CHAINMAIL_CHESTPLATE
+      weight: 12
+    fishing_rod:
+      item: FISHING_ROD
+      weight: 18
+    arrows:
+      item: ARROW
+      amount: "5-10"
+      weight: 25
+  rare:
+    iron_sword:
+      item: IRON_SWORD
+      weight: 15
+    iron_chestplate:
+      item: IRON_CHESTPLATE
+      weight: 10
+    iron_leggings:
+      item: IRON_LEGGINGS
+      weight: 12
+    golden_apple:
+      item: GOLDEN_APPLE
+      amount: "1-2"
+      weight: 10
+    diamond_boots:
+      item: DIAMOND_BOOTS
+      weight: 5
+    bow:
+      item: BOW
+      weight: 15
+      enchants:
+        power: 1
+    ender_pearl:
+      item: ENDER_PEARL
+      weight: 8
+    tnt:
+      item: TNT
+      amount: "1-2"
+      weight: 10
+  centre:
+    diamond_sword:
+      item: DIAMOND_SWORD
+      weight: 5
+    diamond_chestplate:
+      item: DIAMOND_CHESTPLATE
+      weight: 3
+    iron_sword_sharp:
+      item: IRON_SWORD
+      weight: 10
+      enchants:
+        sharpness: 2
+    diamond_helmet:
+      item: DIAMOND_HELMET
+      weight: 5
+    golden_apple:
+      item: GOLDEN_APPLE
+      amount: "2-3"
+      weight: 8
+    nether_star:
+      item: NETHER_STAR
+      weight: 3
+    iron_chestplate:
+      item: IRON_CHESTPLATE
+      weight: 12
+      enchants:
+        protection: 2
+    bow:
+      item: BOW
+      weight: 8
+      enchants:
+        power: 2
+        punch: 1

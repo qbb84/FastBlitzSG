@@ -1,0 +1,28 @@
+kill:
+  pvp: "&c{killer} &7[{killer_kit}] &ekilled &c{victim} &7[{victim_kit}] &8- &6{kills} kill streak!"
+  fire: "&c{victim} &eburned to death &7(last hit by &c{attacker}&7)"
+  void: "&c{victim} &efell into the void &7(last hit by &c{attacker}&7)"
+  generic: "&c{victim} &7[{victim_kit}] &edied."
+
+game:
+  start: "&a&lGAME STARTED!"
+  grace-period: "&ePvP is disabled for &c{time} seconds&e."
+  pvp-enabled: "&c&lPvP is now ENABLED!"
+  deathmatch: "&4&lDEATHMATCH! &cThe border is closing!"
+  winner: "&6&l★ &e{winner} &6has won the game! &6&l★"
+  no-winner: "&eThe game has ended with no winner."
+
+join:
+  success: "&e{player} &ahas joined! &7({count}/{max})"
+  full: "&cThe game is full!"
+  already-in-game: "&cYou are already in a game!"
+
+leave:
+  success: "&aYou have left the game."
+  broadcast: "&e{player} &chas left the game."
+  not-in-game: "&cYou are not in a game."
+
+kit:
+  selected: "&aKit selected: &e{kit}"
+  not-found: "&cKit not found: {kit}"
+  cooldown: "&cAbility on cooldown! &e{time}s &cremaining."
