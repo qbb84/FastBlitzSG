@@ -1,0 +1,31 @@
+name: BlitzBlitz
+version: '${version}'
+main: org.rewind.blitzBlitz.BlitzBlitz
+api-version: '1.21'
+description: Blitz Survival Games plugin for Paper/Spigot
+
+commands:
+  blitz:
+    description: Main Blitz Survival Games command
+    usage: /blitz <subcommand>
+    aliases: [bsg, blitzsg]
+
+permissions:
+  blitz.join:
+    description: Allows joining a game
+    default: true
+  blitz.leave:
+    description: Allows leaving a game
+    default: true
+  blitz.kit:
+    description: Allows kit selection
+    default: true
+  blitz.spectate:
+    description: Allows spectating a game
+    default: true
+  blitz.stats:
+    description: Allows viewing stats
+    default: true
+  blitz.admin:
+    description: Admin commands (arena, reload, forcestart)
+    default: op
