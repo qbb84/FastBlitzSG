@@ -7,6 +7,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 import org.rewind.blitzBlitz.BlitzPlugin;
+import org.rewind.blitzBlitz.cosmetics.CosmeticsGUI;
 import org.rewind.blitzBlitz.gui.KitSelectionGUI;
 
 public final class InventoryClickListener implements Listener {
@@ -26,6 +27,10 @@ public final class InventoryClickListener implements Listener {
             event.setCancelled(true);
             if (event.getCurrentItem() == null) return;
             kitGui.handleClick(player, event.getRawSlot());
+        } else if (holder instanceof CosmeticsGUI cosmeticsGui) {
+            event.setCancelled(true);
+            if (event.getCurrentItem() == null) return;
+            cosmeticsGui.handleClick(player, event.getRawSlot());
         }
     }
 }
