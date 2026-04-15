@@ -79,6 +79,7 @@ public final class PlayerDeathListener implements Listener {
 
         BlitzPlayerEliminatedEvent apiEvent = new BlitzPlayerEliminatedEvent(game, victim.getUniqueId(), killerId);
         Bukkit.getPluginManager().callEvent(apiEvent);
+        plugin.getEventBus().publish(apiEvent);
 
         if (game.getAliveCount() <= 1 && game.getState() != GameState.ENDED) {
             game.transition(GameState.ENDED);

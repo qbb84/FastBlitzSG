@@ -5,11 +5,14 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.jetbrains.annotations.NotNull;
+import org.rewind.blitzBlitz.api.events.BlitzGameEndEvent;
 import org.rewind.blitzBlitz.core.game.Game;
 import org.rewind.blitzBlitz.core.game.GameState;
 import org.rewind.blitzBlitz.core.game.GameStateHandler;
 import org.rewind.blitzBlitz.core.player.SGPlayer;
 import org.rewind.blitzBlitz.util.ChatUtil;
+
+import java.util.UUID;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -48,6 +51,11 @@ public final class EndedState implements GameStateHandler {
             sgPlayer.getSessionStats().addGamePlayed();
             game.getPlugin().getStatsRepository().saveStats(sgPlayer.getUuid(), sgPlayer.getSessionStats());
         }
+
+        UUID winnerId = winners.isEmpty() ? null : winners.get(0).getUuid();
+        BlitzGameEndEvent endEvent = new BlitzGameEndEvent(game, winnerId);
+        Bukkit.getPluginManager().callEvent(endEvent);
+        game.getPlugin().getEventBus().publish(endEvent);
     }
 
     @Override
