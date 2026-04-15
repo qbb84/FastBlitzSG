@@ -23,6 +23,8 @@ import org.rewind.blitzBlitz.core.arena.ArenaRepository;
 import org.rewind.blitzBlitz.core.arena.InMemoryArenaRepository;
 import org.rewind.blitzBlitz.core.chest.ChestManager;
 import org.rewind.blitzBlitz.core.chest.ChestTier;
+import org.rewind.blitzBlitz.cosmetics.CosmeticsGUI;
+import org.rewind.blitzBlitz.cosmetics.CosmeticsManager;
 import org.rewind.blitzBlitz.core.event.BlitzEventBus;
 import org.rewind.blitzBlitz.core.game.Game;
 import org.rewind.blitzBlitz.core.game.GameState;
@@ -65,6 +67,8 @@ public final class BlitzPlugin implements CommandExecutor, TabCompleter {
     private ScoreboardManager scoreboardManager;
     private GUIManager guiManager;
     private StatsRepository statsRepository;
+    private CosmeticsManager cosmeticsManager;
+    private CosmeticsGUI cosmeticsGUI;
 
     private final Map<String, Game> activeGames = new ConcurrentHashMap<>();
     private final Map<String, BlitzCommand> commands = new LinkedHashMap<>();
@@ -90,6 +94,9 @@ public final class BlitzPlugin implements CommandExecutor, TabCompleter {
         spectatorManager = new SpectatorManager();
         scoreboardManager = new ScoreboardManager();
         guiManager = new GUIManager(kitFactory, kitManager);
+        cosmeticsManager = new CosmeticsManager(this);
+        cosmeticsManager.subscribeEvents(eventBus);
+        cosmeticsGUI = new CosmeticsGUI(cosmeticsManager);
 
         LootConfig.load(plugin, chestManager);
         loadArenas();
@@ -98,6 +105,7 @@ public final class BlitzPlugin implements CommandExecutor, TabCompleter {
         registerListeners();
         startGameTickLoop();
         startArmoursmithRepairLoop();
+        startCosmeticsTickLoop();
 
         BlitzAPI.init(this);
 
@@ -106,6 +114,7 @@ public final class BlitzPlugin implements CommandExecutor, TabCompleter {
 
     public void disable() {
         kitManager.saveSelections();
+        cosmeticsManager.saveAll();
         scheduler.cancelAll();
         for (Game game : activeGames.values()) {
             game.cleanup();
@@ -144,6 +153,7 @@ public final class BlitzPlugin implements CommandExecutor, TabCompleter {
         commands.put("arena", new ArenaCommand(this));
         commands.put("reload", new ReloadCommand(this));
         commands.put("forcestart", new ForceStartCommand(this));
+        commands.put("trails", new TrailsCommand(this));
 
         var cmd = plugin.getCommand("blitz");
         if (cmd != null) {
@@ -169,6 +179,10 @@ public final class BlitzPlugin implements CommandExecutor, TabCompleter {
                 scoreboardManager.update(game);
             }
         }, 0L, 20L);
+    }
+
+    private void startCosmeticsTickLoop() {
+        scheduler.runTaskTimer("cosmetics-tick", () -> cosmeticsManager.onTick(), 0L, 2L);
     }
 
     private void startArmoursmithRepairLoop() {
@@ -376,4 +390,6 @@ public final class BlitzPlugin implements CommandExecutor, TabCompleter {
     @NotNull public GUIManager getGUIManager() { return guiManager; }
     @NotNull public StatsRepository getStatsRepository() { return statsRepository; }
     @NotNull public Map<String, Game> getActiveGames() { return activeGames; }
+    @NotNull public CosmeticsManager getCosmeticsManager() { return cosmeticsManager; }
+    @NotNull public CosmeticsGUI getCosmeticsGUI() { return cosmeticsGUI; }
 }
